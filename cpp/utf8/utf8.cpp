@@ -71,13 +71,14 @@ bool IsValidUTF8(const char* s)
   int byteCount = 0;
   int runeByteCount = 0;
   int expectedRuneCount = 0;
+  int nbrOfLeadingOnes = 0;
   const char *p = s;
   while (*p != '\0') 
   {
     switch (state)
     {
      case kStart:
-      int nbrOfLeadingOnes = NumLeadingOnes(*p);
+      nbrOfLeadingOnes = NumLeadingOnes(*p);
       expectedRuneCount = (nbrOfLeadingOnes ? nbrOfLeadingOnes : 1);
       // cout << "expectedRuneCount: " << expectedRuneCount << endl;
       // cout << "runeByteCount: " << runeByteCount << endl;
